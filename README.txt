@@ -1,4 +1,4 @@
-To run script file by:
+Run script file by:
 - Right-click and select "Run with PowerShell" option.
 
 To schedule backup:
