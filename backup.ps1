@@ -1,10 +1,10 @@
 param (
-  $wowFolder = "",
-  $backUpFolder = "",
-  $scriptFolder = ""
+  $wow_folder = "",
+  $backup_folder = "",
+  $script_folder = ""
 )
 
-$Logfile = "$($scriptFolder)\backup.log"
+$Logfile = "$($script_folder)\backup.log"
 
 Function LogWrite {
   Param ([string]$logstring)
@@ -13,18 +13,18 @@ Function LogWrite {
 
 LogWrite "===== BACKUP START ====="
 
-If (!(test-path $wowFolder)) {
+If (!(test-path $wow_folder)) {
   LogWrite "WoW folder not found"
   Exit
 }
 
-$wtfFolder = "$($wowFolder)\_retail_\WTF\"
-$uiFolder = "$($wowFolder)\_retail_\Interface\"
-$ssFolder = "$($wowFolder)\_retail_\Screenshots\"
+$wtfFolder = "$($wow_folder)\_retail_\WTF\"
+$uiFolder = "$($wow_folder)\_retail_\Interface\"
+$ssFolder = "$($wow_folder)\_retail_\Screenshots\"
 
-If (!(test-path $backUpFolder)) {
+If (!(test-path $backup_folder)) {
   LogWrite "Backup folder - creating"
-  New-Item -ItemType Directory -Force -Path $backUpFolder
+  New-Item -ItemType Directory -Force -Path $backup_folder
   LogWrite "Backup folder - created"
 }
 
@@ -34,7 +34,7 @@ $ProgressPreference = "SilentlyContinue"
 
 If (test-path $wtfFolder) {
   LogWrite "WTF folder - backup start"
-  Compress-Archive -Path $wtfFolder -DestinationPath "$($backUpFolder)\wtf" -CompressionLevel "NoCompression" -Force
+  Compress-Archive -Path $wtfFolder -DestinationPath "$($backup_folder)\wtf" -CompressionLevel "NoCompression" -Force
   LogWrite "WTF folder - backup done"
 } else {
   LogWrite "WTF folder - not found"
@@ -42,14 +42,14 @@ If (test-path $wtfFolder) {
 
 If (test-path $uiFolder) {
   LogWrite "UI folder - backup start"
-  Compress-Archive -Path $uiFolder -DestinationPath "$($backUpFolder)\interface" -CompressionLevel "NoCompression" -Force
+  Compress-Archive -Path $uiFolder -DestinationPath "$($backup_folder)\interface" -CompressionLevel "NoCompression" -Force
   LogWrite "UI folder - backup done"
 } else {
   LogWrite "UI folder - not found"
 }
 
 If (test-path $ssFolder) {
-  Compress-Archive -Path $ssFolder -DestinationPath "$($backUpFolder)\Screenshots" -CompressionLevel "NoCompression" -Force
+  Compress-Archive -Path $ssFolder -DestinationPath "$($backup_folder)\Screenshots" -CompressionLevel "NoCompression" -Force
 }
 
 LogWrite "===== BACKUP DONE ====="

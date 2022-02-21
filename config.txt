@@ -1,3 +1,3 @@
-backUpFolder="d:\wow-backup"
-wowFolder="d:\Games\World of Warcraft"
-backupAt=8PM
+backup_folder="d:\wow-backup"
+wow_folder="d:\Games\World of Warcraft"
+backup_at=8PM
