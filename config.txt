@@ -1,0 +1,3 @@
+backUpFolder="C:\Users\pete\wow-backup"
+wowFolder="d:\Games\World of Warcraft"
+backupAt=8PM

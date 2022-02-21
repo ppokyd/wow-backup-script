@@ -1,0 +1,2 @@
+
+Start-ScheduledTask -TaskName "WoWBackup"
