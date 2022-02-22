@@ -6,7 +6,7 @@ Get-Content -Path "$($pwd)\config.txt" | Foreach-Object {
 
 $taskAction = New-ScheduledTaskAction `
     -Execute "powershell.exe" `
-    -Argument "-windowstyle hidden -File $($pwd)\backup.ps1 -wow_folder $($wow_folder) -backup_folder $($backup_folder) -script_folder $($pwd)"
+    -Argument "-windowstyle hidden -ExecutionPolicy Bypass -File $($pwd)\backup.ps1 -wow_folder $($wow_folder) -backup_folder $($backup_folder) -script_folder $($pwd)"
 
 $taskTrigger = New-ScheduledTaskTrigger -Daily -At $backup_at
 
