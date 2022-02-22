@@ -49,7 +49,9 @@ If (test-path $uiFolder) {
 }
 
 If (test-path $ssFolder) {
+  LogWrite "UI Screenshots - backup start"
   Compress-Archive -Path $ssFolder -DestinationPath "$($backup_folder)\Screenshots" -CompressionLevel "NoCompression" -Force
+  LogWrite "UI Screenshots - backup done"
 }
 
 LogWrite "===== BACKUP DONE ====="
